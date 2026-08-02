@@ -1,0 +1,63 @@
+generated: '2026-08-02'
+method: probed
+source: https://auth.thoughtmachine.net/application/o/vault-portal/.well-known/openid-configuration
+x-scope-of-this-file: >-
+  These are the OAuth 2.0 / OIDC scopes advertised by the Thought Machine identity provider
+  (auth.thoughtmachine.net, Authentik) for the vault-portal client — the SSO in front of the
+  Vault documentation and enablement portals. They are NOT the authorization scopes of the
+  Vault Core or Vault Payments data APIs, which are documented behind the partner login and
+  were not anonymously observable. No scope list has been invented.
+schemes:
+- name: vault-portal-oidc
+  source: well-known/thought-machine-openid-configuration.json
+  issuer: https://auth.thoughtmachine.net/application/o/vault-portal/
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://auth.thoughtmachine.net/application/o/authorize/
+    tokenUrl: https://auth.thoughtmachine.net/application/o/token/
+    pkce: S256
+  - flow: clientCredentials
+    tokenUrl: https://auth.thoughtmachine.net/application/o/token/
+  - flow: deviceCode
+    deviceAuthorizationUrl: https://auth.thoughtmachine.net/application/o/device/
+    tokenUrl: https://auth.thoughtmachine.net/application/o/token/
+scopes:
+- scope: openid
+  description: OpenID Connect authentication; issues an ID token for the portal user.
+  flows: [authorizationCode]
+  sources: [well-known/thought-machine-openid-configuration.json]
+- scope: email
+  description: Release the user's email address and email_verified claim.
+  flows: [authorizationCode]
+  sources: [well-known/thought-machine-openid-configuration.json]
+- scope: profile
+  description: Release profile claims (name, given_name, preferred_username, nickname, groups).
+  flows: [authorizationCode]
+  sources: [well-known/thought-machine-openid-configuration.json]
+- scope: entitlements
+  description: Release the entitlements claim used to authorise portal/documentation access.
+  flows: [authorizationCode]
+  sources: [well-known/thought-machine-openid-configuration.json]
+- scope: role
+  description: Release the roles claim for the authenticated portal user.
+  flows: [authorizationCode]
+  sources: [well-known/thought-machine-openid-configuration.json]
+claims_supported:
+- sub
+- iss
+- aud
+- exp
+- iat
+- auth_time
+- acr
+- amr
+- nonce
+- email
+- email_verified
+- entitlements
+- roles
+- name
+- given_name
+- preferred_username
+- nickname
+- groups

@@ -1,0 +1,38 @@
+generated: '2026-08-02'
+method: searched
+source: https://www.thoughtmachine.net/api-terms
+name: TM Sandbox APIs / TM Sandbox Environment
+summary: >-
+  Thought Machine operates a partner sandbox programme — the "TM Sandbox APIs" and the "TM
+  Sandbox Environment" — under a published set of API Sandbox Terms and Conditions. It is a
+  non-production testing surface for partners building "Partner Middleware" against Vault, not
+  a self-serve developer sandbox: access is granted by application and review, and the terms
+  run for 24 months from the start date.
+access:
+  model: application-and-review
+  self_serve: false
+  application_form: https://docs.google.com/forms/d/e/1FAIpQLSc39UA9UoR_9mJDONS0_D34Bub67IaPlhcPKFwfjSkD3_FjFA/viewform
+  terms: https://www.thoughtmachine.net/api-terms
+  legal_entity: Thought Machine Group Limited
+  decision: >-
+    Thought Machine reviews each submission at its discretion and notifies the applicant by
+    email; it is not required to give reasons for a refusal.
+  term_months: 24
+test_vs_live:
+  separation: separate sandbox environment (TM Sandbox Environment) distinct from production Vault deployments
+  key_prefixes: null
+  x-note: >-
+    No test/live key prefixes, magic test values, test card numbers or fixture triggers are
+    published anonymously — they live in the partner documentation behind the SSO login at
+    docs.thoughtmachine.net. None have been invented here.
+constraints:
+- Non-production data only; posting personal data into the sandbox is prohibited.
+- Non-exclusive, non-transferable right of access.
+- No uptime, availability or support guarantee for the sandbox.
+- Posted content and test data may be deleted at any time without notice.
+- Thought Machine may add, remove, change or restrict sandbox functionality without notice.
+- No commercial or production use.
+x-evidence:
+- fetched: '2026-08-02'
+  url: https://www.thoughtmachine.net/api-terms
+  http_status: 200

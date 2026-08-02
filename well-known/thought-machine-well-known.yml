@@ -1,0 +1,90 @@
+generated: '2026-08-02'
+method: probed
+source: live GET of /.well-known/* on every Thought Machine host in apis.yml
+hosts:
+- host: https://www.thoughtmachine.net
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /openapi.json
+    status: 404
+  - path: /swagger.json
+    status: 404
+- host: https://docs.thoughtmachine.net
+  note: >-
+    Every path on the documentation host answers 302 to the auth.thoughtmachine.net SSO flow
+    (client_id vault-portal, PKCE S256, redirect to vault-portal.thoughtmachine.net). The
+    documentation and API reference are gated behind a partner login; no anonymous
+    /.well-known/ surface is served.
+  documents:
+  - path: /.well-known/security.txt
+    status: 302
+  - path: /.well-known/openid-configuration
+    status: 302
+  - path: /.well-known/oauth-authorization-server
+    status: 302
+  - path: /.well-known/agent-card.json
+    status: 302
+  - path: /.well-known/agent.json
+    status: 302
+  - path: /llms.txt
+    status: 302
+  - path: /openapi.json
+    status: 302
+- host: https://auth.thoughtmachine.net
+  note: >-
+    Identity provider (goauthentik.io / Authentik) fronting the Vault documentation and
+    enablement portals.
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: thought-machine-auth-security.txt
+    vendor_default: true
+    x-note: >-
+      This is the upstream Authentik product default (Contact security@goauthentik.io,
+      Policy https://docs.goauthentik.io/security/policy, Expires 2024-01-01 — already
+      expired per RFC 9116). It is NOT a Thought Machine-authored disclosure policy, so no
+      SecurityTxt or Security pointer is wired from it.
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /application/o/vault-portal/.well-known/openid-configuration
+    status: 200
+    file: thought-machine-openid-configuration.json
+    x-note: >-
+      Real OIDC discovery document for the vault-portal client. Feeds
+      authentication/thought-machine-authentication.yml and scopes/thought-machine-scopes.yml.
+- host: https://vault-portal.thoughtmachine.net
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 302
+  - path: /.well-known/oauth-authorization-server
+    status: 302
+  - path: /.well-known/security.txt
+    status: 302
+a2a:
+  probed: true
+  result: none
+  x-note: >-
+    /.well-known/agent-card.json and /.well-known/agent.json returned 404 on
+    www.thoughtmachine.net and 302 (SSO) on docs./portal./vault-portal. No agent card exists,
+    so no a2a/ artifact was written.
+mcp:
+  probed: true
+  result: none
+  x-note: No hosted or remote MCP server is published by Thought Machine as of this probe.

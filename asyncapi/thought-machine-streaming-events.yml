@@ -1,0 +1,68 @@
+generated: '2026-08-02'
+method: searched
+source: https://www.thoughtmachine.net/vault-core, https://www.thoughtmachine.net/vaultpayments
+spec_type: none
+spec_published: false
+surface: kafka-streaming
+x-note: >-
+  Thought Machine ships a genuine, advertised event surface — but it is Kafka streaming, not
+  HTTP webhooks, and no AsyncAPI document is published publicly. This file captures the event
+  surface as advertised on the product pages; the per-topic event catalogue and message schemas
+  live in the partner documentation behind the SSO login at docs.thoughtmachine.net and are NOT
+  reproduced or guessed here.
+streams:
+- name: Vault Core Streaming API
+  product: Vault Core
+  transport: Kafka
+  direction: outbound
+  delivery: real-time
+  description: >-
+    Native real-time event streaming out of Vault Core. Advertised event categories are
+    accounting events, balance updates and customer changes; the streaming surface is how
+    downstream systems (data platforms, channels, CRM, reporting) consume ledger activity.
+  advertised_event_categories:
+  - accounting events
+  - balance updates
+  - customer changes
+  source: https://www.thoughtmachine.net/vault-core
+- name: Vault Core Migration API
+  product: Vault Core
+  transport: Kafka
+  direction: inbound
+  description: >-
+    Kafka-based endpoint optimised for bulk migration of data from a legacy core banking
+    system into Vault Core.
+  source: https://www.thoughtmachine.net/vault-core
+- name: Vault Payments streaming APIs
+  product: Vault Payments
+  transport: streaming
+  direction: outbound
+  delivery: real-time
+  description: >-
+    All payment, product, payment-instrument and configuration data is streamed out of Vault
+    Payments in real time and made accessible to the bank alongside the RESTful APIs.
+  advertised_data_domains:
+  - payment data
+  - product data
+  - payment instrument data
+  - configuration data
+  source: https://www.thoughtmachine.net/vaultpayments
+webhooks: []
+webhooks_x-note: >-
+  No HTTP webhook catalogue is published; the event surface is stream-based.
+asyncapi_documents: []
+pointer_decision:
+  wired_as: Events
+  webhooks_pointer_withheld: true
+  reason: >-
+    The canonical `Webhooks` pointer (webhooks_advertised, 3 pts; event_surface_described,
+    6 pts) is deliberately NOT wired. Thought Machine advertises an event surface but it is
+    Kafka streaming rather than HTTP webhooks, and there is no typed contract (no AsyncAPI,
+    no OpenAPI webhooks/callbacks object) an agent could read. Emitting `Webhooks` here would
+    credit a capability the provider does not publish in that form.
+asyncapi_probes:
+- url: https://www.thoughtmachine.net/asyncapi.yaml
+  status: 404
+- url: https://docs.thoughtmachine.net/asyncapi.yaml
+  status: 302
+  note: partner SSO redirect

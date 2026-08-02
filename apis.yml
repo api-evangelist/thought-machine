@@ -1,18 +1,91 @@
 aid: thought-machine
 name: Thought Machine
-description: 'Thought Machine is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Thought Machine is a London-headquartered cloud-native core banking technology
+  company founded in 2014 by Paul Taylor, with offices in New York and Singapore. It builds
+  Vault Core, a universal product engine in which every banking product — mortgages, loans,
+  deposits, credit cards, wallets and Islamic finance products — is expressed as a developer-written
+  smart contract executed against a real-time ledger, and Vault Payments, a cloud-native
+  payments processing platform that natively represents payments as ISO 20022 messages and
+  runs card, instant (FedNow, UK New Payments Architecture, SEPA Instant), batch clearing and
+  cross-border rails. Both products are API-first: Vault Core exposes a REST Core API, a
+  Posting API for financial movements, a Kafka-based Streaming API that emits accounting,
+  balance and customer events in real time, a Migration API for legacy core data, and a
+  Contracts API for smart-contract functions. Deployment is SaaS or bank-hosted on AWS, Azure,
+  GCP, IBM Cloud, OpenShift or hybrid. Clients include Lloyds Banking Group, Standard Chartered
+  (Mox), JPMorgan Chase, SEB, ING Poland, Intesa Sanpaolo, Kiwibank, Lunar and Judo Bank. The
+  developer documentation and API reference are published behind a partner login at
+  docs.thoughtmachine.net; a separate TM Sandbox API programme is available by application.'
+image: https://cdn.prod.website-files.com/6371f3e94a645913703e255a/6371f3e94a645953333e28d3_TM_Logo_Black%20.svg
 url: https://raw.githubusercontent.com/api-evangelist/thought-machine/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment-pipeline
 specificationVersion: '0.20'
 created: '2026-08-02'
 modified: '2026-08-02'
 tags:
 - Company
-apis: []
+- Banking
+- Core Banking
+- Financial Services
+- Payments
+- Cloud Native
+- Smart Contracts
+- ISO 20022
+- Ledger
+- Fintech
+- United Kingdom
+apis:
+- aid: thought-machine:vault-core
+  name: Thought Machine Vault Core API
+  description: >-
+    Vault Core is Thought Machine's cloud-native core banking engine. Its API surface spans a
+    REST Core API for external integrations (channels, CRM, operator UI), a Posting API that
+    manages financial movements (authorisation, settlement, release of funds, credits and
+    debits) against the real-time ledger, a Kafka-based Streaming API that emits accounting,
+    balance and customer events, a Migration API optimised for bulk legacy-core data loads, and
+    a Contracts API exposing the common functions available to smart contracts. Base URLs are
+    per-deployment (SaaS tenant or bank-hosted cluster) and are not published publicly; the
+    API reference is served behind a partner login.
+  humanURL: https://www.thoughtmachine.net/vault-core
+  tags:
+  - Core Banking
+  - Ledger
+  - Smart Contracts
+  - Accounts
+  - Postings
+  - Streaming
+  properties:
+  - type: Documentation
+    url: https://docs.thoughtmachine.net/
+    x-note: partner login required (SSO via auth.thoughtmachine.net)
+  - type: Website
+    url: https://www.thoughtmachine.net/vault-core
+- aid: thought-machine:vault-payments
+  name: Thought Machine Vault Payments API
+  description: >-
+    Vault Payments is Thought Machine's cloud-native payments processing platform, able to run
+    card, instant, batch clearing and cross-border payment types across schemes and regions.
+    Payments are natively represented as ISO 20022 messages. The platform exposes RESTful APIs
+    plus streaming APIs that push payment, product, payment-instrument and configuration data
+    out in real time, and offers dynamic account routing that decouples payment instruments
+    from funding sources. It runs standalone against a legacy core or pre-integrated with
+    Vault Core. Base URLs are per-deployment and are not published publicly.
+  humanURL: https://www.thoughtmachine.net/vaultpayments
+  tags:
+  - Payments
+  - ISO 20022
+  - Cards
+  - Instant Payments
+  - Clearing
+  - Streaming
+  properties:
+  - type: Documentation
+    url: https://docs.thoughtmachine.net/
+    x-note: partner login required (SSO via auth.thoughtmachine.net)
+  - type: Website
+    url: https://www.thoughtmachine.net/vaultpayments
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -20,4 +93,43 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://forgeglobal.com/thought-machine_stock/
+  url: https://www.thoughtmachine.net/
+- type: Documentation
+  url: https://docs.thoughtmachine.net/
+- type: DeveloperPortal
+  url: https://portal.thoughtmachine.net/
+- type: Blog
+  url: https://www.thoughtmachine.net/blog
+- type: Support
+  url: https://www.thoughtmachine.net/contact
+- type: GitHubOrganization
+  url: https://github.com/thought-machine
+- type: PrivacyPolicy
+  url: https://www.thoughtmachine.net/privacy
+- type: TermsOfService
+  url: https://www.thoughtmachine.net/api-terms
+- type: Sandbox
+  url: sandbox/thought-machine-sandbox.yml
+- type: WellKnown
+  url: well-known/thought-machine-well-known.yml
+- type: Authentication
+  url: authentication/thought-machine-authentication.yml
+- type: OAuthScopes
+  url: scopes/thought-machine-scopes.yml
+- type: Conformance
+  url: conformance/thought-machine-conformance.yml
+- type: Compliance
+  url: https://www.thoughtmachine.net/
+- type: DomainSecurity
+  url: security/thought-machine-domain-security.yml
+- type: Lifecycle
+  url: lifecycle/thought-machine-lifecycle.yml
+- type: Events
+  url: asyncapi/thought-machine-streaming-events.yml
+- type: LLMsTxt
+  url: llms/thought-machine-llms.txt
+x-enrichment:
+  date: '2026-08-02'
+  status: enriched
+  artifacts_added: 11
+  pass: local-v1

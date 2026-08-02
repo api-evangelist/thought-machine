@@ -1,0 +1,35 @@
+generated: '2026-08-02'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.thoughtmachine.net
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 21 04:13:43 2026 GMT
+  hsts: false
+- host: docs.thoughtmachine.net
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 26 00:13:13 2026 GMT
+  hsts: false
+  note: 302 redirect to auth.thoughtmachine.net SSO (partner login required)
+- host: portal.thoughtmachine.net
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 30 16:29:03 2026 GMT
+  hsts: false
+  note: 302 redirect to auth.thoughtmachine.net SSO (enablement portal)
+- host: auth.thoughtmachine.net
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  4 03:57:33 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+  hsts_include_subdomains: true
+domains:
+- domain: thoughtmachine.net
+  dnssec: true
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject

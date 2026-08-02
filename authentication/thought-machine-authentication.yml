@@ -1,0 +1,76 @@
+generated: '2026-08-02'
+method: probed
+source: https://auth.thoughtmachine.net/application/o/vault-portal/.well-known/openid-configuration
+docs: https://docs.thoughtmachine.net/
+x-note: >-
+  Thought Machine publishes no public OpenAPI, so no securitySchemes could be derived. What is
+  anonymously observable is the OpenID Connect discovery document for the Vault portal identity
+  provider (Authentik), captured verbatim at
+  well-known/thought-machine-openid-configuration.json. The Vault Core and Vault Payments API
+  authentication model itself is documented behind the partner login at docs.thoughtmachine.net
+  and was NOT observable; nothing about it is asserted here.
+summary:
+  types:
+  - openIdConnect
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+  - clientCredentials
+  - implicit
+  - password
+  - refreshToken
+  - deviceCode
+  pkce: true
+  scope: vault developer/enablement portal SSO (not the Vault Core / Vault Payments data APIs)
+schemes:
+- name: vault-portal-oidc
+  type: openIdConnect
+  openIdConnectUrl: https://auth.thoughtmachine.net/application/o/vault-portal/.well-known/openid-configuration
+  issuer: https://auth.thoughtmachine.net/application/o/vault-portal/
+  provider: Authentik (goauthentik.io)
+  endpoints:
+    authorization: https://auth.thoughtmachine.net/application/o/authorize/
+    token: https://auth.thoughtmachine.net/application/o/token/
+    userinfo: https://auth.thoughtmachine.net/application/o/userinfo/
+    introspection: https://auth.thoughtmachine.net/application/o/introspect/
+    revocation: https://auth.thoughtmachine.net/application/o/revoke/
+    device_authorization: https://auth.thoughtmachine.net/application/o/device/
+    end_session: https://auth.thoughtmachine.net/application/o/vault-portal/end-session/
+    jwks: https://auth.thoughtmachine.net/application/o/vault-portal/jwks/
+  grant_types:
+  - authorization_code
+  - refresh_token
+  - implicit
+  - client_credentials
+  - password
+  - urn:ietf:params:oauth:grant-type:device_code
+  response_types:
+  - code
+  - id_token
+  - id_token token
+  - code token
+  - code id_token
+  - code id_token token
+  code_challenge_methods:
+  - plain
+  - S256
+  token_endpoint_auth_methods:
+  - client_secret_post
+  - client_secret_basic
+  id_token_signing_alg:
+  - RS256
+  subject_types:
+  - public
+  backchannel_logout_supported: true
+  frontchannel_logout_supported: true
+  sources:
+  - well-known/thought-machine-openid-configuration.json
+gated:
+- surface: Vault Core Core API / Posting API / Contracts API
+  auth_documented_at: https://docs.thoughtmachine.net/
+  observable: false
+  reason: documentation host requires partner SSO login
+- surface: Vault Payments REST and streaming APIs
+  auth_documented_at: https://docs.thoughtmachine.net/
+  observable: false
+  reason: documentation host requires partner SSO login

@@ -1,0 +1,54 @@
+generated: '2026-08-02'
+method: searched
+source: >-
+  https://www.thoughtmachine.net/vault-core,
+  https://www.ikigaidigital.io/insights/smart-contract-api-v4-upgrades (third-party partner
+  write-up), live probes of status./trust. hosts
+versioning:
+  scheme: major-product-release
+  products:
+  - product: Vault Core
+    cadence: one major release per calendar year
+    contract_language_api: >-
+      The Contracts (smart contract) Language API is separately versioned; v4 was released with
+      Vault Core 4.5 (2022). v3 was marked deprecated and, per the partner write-up, support is
+      removed by the Vault Core 7.x release.
+    confidence: medium
+    evidence_type: third-party partner article; Thought Machine's own release notes are behind partner SSO
+  - product: Vault Payments
+    cadence: not published publicly
+  docs: https://docs.thoughtmachine.net/
+  x-note: >-
+    Thought Machine's own versioning and release-notes pages sit behind the partner login at
+    docs.thoughtmachine.net and could not be read anonymously.
+deprecation:
+  policy_url: null
+  policy_published_publicly: false
+  practice: >-
+    Rolling major-release deprecation — items marked deprecated in one annual major release are
+    removed in the following one (evidence: partner write-up above). No public, provider-authored
+    deprecation policy page exists, and no Sunset/Deprecation header behaviour could be observed
+    because there is no anonymously reachable API host.
+  sunset_header: unknown
+sla:
+  url: null
+  uptime_target: null
+  x-note: >-
+    Vault is delivered either SaaS or bank-hosted; SLAs are contractual and not published. The
+    TM Sandbox terms explicitly disclaim any uptime or support guarantee
+    (https://www.thoughtmachine.net/api-terms).
+status_page: null
+status_page_probes:
+- url: https://status.thoughtmachine.net/
+  result: DNS does not resolve
+- url: https://www.thoughtmachine.net/status
+  status: 404
+changelog: null
+changelog_x-note: >-
+  No public dated changelog or release-notes feed. Product news is published as marketing posts
+  at https://www.thoughtmachine.net/newsroom and https://www.thoughtmachine.net/blog, which are
+  not a versioned changelog.
+deprecated_operations: []
+x-note: >-
+  No StatusPage or Deprecation pointer is wired in apis.yml because neither a public status page
+  nor a provider-published deprecation policy exists. Absence recorded, not fabricated.
