@@ -28,6 +28,18 @@ tags:
 - Company
 - Banking
 - Core Banking
+- Financial-Services
+- Payments
+- Cloud-Native
+- Smart Contracts
+- ISO 20022
+- Ledger
+- Fintech
+- United Kingdom
+tags_raw:
+- Company
+- Banking
+- Core Banking
 - Financial Services
 - Payments
 - Cloud Native
@@ -50,6 +62,13 @@ apis:
     API reference is served behind a partner login.
   humanURL: https://www.thoughtmachine.net/vault-core
   tags:
+  - Core Banking
+  - Ledger
+  - Smart Contracts
+  - Account
+  - Postings
+  - Streaming
+  tags_raw:
   - Core Banking
   - Ledger
   - Smart Contracts
