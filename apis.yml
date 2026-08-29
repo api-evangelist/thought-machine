@@ -15,6 +15,17 @@ description: 'Thought Machine is a London-headquartered cloud-native core bankin
   (Mox), JPMorgan Chase, SEB, ING Poland, Intesa Sanpaolo, Kiwibank, Lunar and Judo Bank. The
   developer documentation and API reference are published behind a partner login at
   docs.thoughtmachine.net; a separate TM Sandbox API programme is available by application.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://cdn.prod.website-files.com/6371f3e94a645913703e255a/6371f3e94a645953333e28d3_TM_Logo_Black%20.svg
 url: https://raw.githubusercontent.com/api-evangelist/thought-machine/refs/heads/main/apis.yml
 x-type: company
