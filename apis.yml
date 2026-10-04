@@ -54,7 +54,7 @@ tags:
 - Company
 - Banking
 - Core Banking
-- Financial-Services
+- Financial Services
 - Payments
 - Cloud-Native
 - Smart Contracts
@@ -74,6 +74,7 @@ tags_raw:
 - Ledger
 - Fintech
 - United Kingdom
+- Financial-Services
 apis:
 - aid: thought-machine:vault-core
   name: Thought Machine Vault Core API
