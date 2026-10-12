@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/thought-machine/integrations
+- https://n8n.io/integrations/thought-machine/
+- https://composio.dev/toolkits/thought-machine
+- https://monid.ai/tools/thought-machine
+checked:
+- https://composio.dev/toolkits/thought-machine
+- https://monid.ai/tools/thought-machine
+- https://n8n.io/integrations/thought-machine/
+- https://zapier.com/apps/thought-machine/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
