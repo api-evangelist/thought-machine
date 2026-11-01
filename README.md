@@ -64,40 +64,104 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Thought Machine is a London-headquartered cloud-native core banking technology company founded in 2014 by Paul Taylor, with offices in New York and Singapore. It builds **Vault Core**, a universal product engine in which every banking product is expressed as a developer-written smart contract executed against a real-time ledger, and **Vault Payments**, a cloud-native payments processing platform that natively represents payments as ISO 20022 messages.
+Thought Machine is a London-headquartered cloud-native core banking technology company founded in 2014 by Paul Taylor, with offices in New York and Singapore. It builds Vault Core, a universal product engine in which every banking product — mortgages, loans, deposits, credit cards, wallets and Islamic finance products — is expressed as a developer-written smart contract executed against a real-time ledger, and Vault Payments, a cloud-native payments processing platform that natively represents payments as ISO 20022 messages and runs card, instant (FedNow, UK New Payments Architecture, SEPA Instant), batch clearing and cross-border rails. Both products are API-first: Vault Core exposes a REST Core API, a Posting API for financial movements, a Kafka-based Streaming API that emits accounting, balance and customer events in real time, a Migration API for legacy core data, and a Contracts API for smart-contract functions. Deployment is SaaS or bank-hosted on AWS, Azure, GCP, IBM Cloud, OpenShift or hybrid. Clients include Lloyds Banking Group, Standard Chartered (Mox), JPMorgan Chase, SEB, ING Poland, Intesa Sanpaolo, Kiwibank, Lunar and Judo Bank. The developer documentation and API reference are published behind a partner login at docs.thoughtmachine.net; a separate TM Sandbox API programme is available by application.
 
-- Website — https://www.thoughtmachine.net/
-- Vault Core — https://www.thoughtmachine.net/vault-core
-- Vault Payments — https://www.thoughtmachine.net/vaultpayments
-- Documentation (partner login required) — https://docs.thoughtmachine.net/
-- GitHub — https://github.com/thought-machine
+**Areas:** Company · Banking · Core Banking · Financial Services · Payments · Cloud-Native · Smart Contracts · ISO 20022 · Ledger · Fintech · United Kingdom
 
-## API surface
+## Thought Machine on APIs.io
 
-| API | Product | Style |
-|---|---|---|
-| Core API | Vault Core | REST — external integrations (channels, CRM, operator UI) |
-| Posting API | Vault Core | financial movements against the real-time ledger |
-| Streaming API | Vault Core | Kafka — accounting, balance and customer events |
-| Migration API | Vault Core | Kafka — bulk legacy core data loads |
-| Contracts API | Vault Core | smart contract functions |
-| Vault Payments APIs | Vault Payments | REST + real-time streaming |
+Everything profiled for Thought Machine is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/thought-machine/](https://apis.io/providers/thought-machine/)** — or go straight to one of the APIs or properties below.
 
-Base URLs are per-deployment (SaaS tenant or bank-hosted cluster) and are not published publicly.
+### APIs (2)
 
-## What the enrichment pass found (2026-08-02)
+- [Thought Machine Vault Core API](https://apis.io/apis/thought-machine/vault-core/) — Vault Core is Thought Machine's cloud-native core banking engine. Its API surface spans a REST Core API for external integrations (channels, CRM, operator…
+- [Thought Machine Vault Payments API](https://apis.io/apis/thought-machine/vault-payments/) — Vault Payments is Thought Machine's cloud-native payments processing platform, able to run card, instant, batch clearing and cross-border payment types…
 
-**No public machine-readable contract.** Probed `/openapi.json`, `/openapi.yaml`, `/swagger.json`, `/api-docs`, `/docs`, `/redoc` and `/asyncapi.yaml` against `www.`, `docs.`, `portal.` and `api.` hosts. Every path on the documentation host answers `302` to the `auth.thoughtmachine.net` SSO flow; `api.thoughtmachine.net` does not resolve. No GraphQL endpoint, **no MCP server**, and **no A2A agent card** (`/.well-known/agent-card.json` and `/.well-known/agent.json` miss on every host — no `a2a/` artifact was written).
+### Published properties
 
-What *is* anonymously observable and captured here:
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- `well-known/` — full probe record; the OIDC discovery document for the Vault portal identity provider (Authentik) is real and saved verbatim. The only `security.txt` found is the upstream Authentik product default (expired, points at `security@goauthentik.io`) — it is **not** a Thought Machine disclosure policy and no `SecurityTxt`/`Security` pointer was wired from it.
-- `authentication/` + `scopes/` — the OIDC/OAuth 2.0 profile of the portal SSO (authorization_code + PKCE S256, client_credentials, device_code; scopes `openid`, `email`, `profile`, `entitlements`, `role`). Scoped explicitly to the portal, **not** the Vault data APIs.
-- `sandbox/` — the TM Sandbox APIs / TM Sandbox Environment programme, access by application form under published terms.
-- `conformance/` — ISO 27001, AICPA SOC 2 and ISO 22301 accreditation badges published in the site footer (each verified visually); ISO 20022 native in Vault Payments; OAuth 2.0 / OIDC / PKCE probed.
-- `lifecycle/` — annual major-release cadence and the Contracts Language API v3→v4 deprecation path (third-party partner evidence; Thought Machine's own release notes are gated). **No public status page and no published deprecation policy** — absence recorded, so no `StatusPage`/`Deprecation` pointers.
-- `asyncapi/` — the Kafka streaming event surface. No AsyncAPI document and no HTTP webhooks, so the `Webhooks` pointer was deliberately withheld.
-- `security/` — probed TLS/HSTS/DNSSEC/CAA/SPF/DMARC. No vulnerability disclosure programme and no trust centre found.
-- `llms/` — generated (no provider-published `/llms.txt`).
+#### AsyncAPI (1)
 
-No public first-party client SDKs exist. The `thought-machine` GitHub org publishes engineering tooling (the Please build system, Dracon, Prometheus exporters, a Go ISO 20022 message library) rather than Vault API clients, so no `packages/`/`SDKs` pointer was emitted.
+Event-driven and webhook contracts.
+
+- [Thought Machine Streaming Events](https://apis.io/asyncapis/thought-machine/thought-machine-streaming-events/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Thought Machine Authentication](https://apis.io/security/thought-machine/thought-machine-authentication/)
+- [Thought Machine Domain Security](https://apis.io/security/thought-machine/thought-machine-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Thought Machine Scopes](https://apis.io/scopes/thought-machine/thought-machine-scopes/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.thoughtmachine.net/)
+- [Documentation](https://docs.thoughtmachine.net/)
+- [Support](https://www.thoughtmachine.net/contact)
+- [Blog](https://www.thoughtmachine.net/blog)
+- [Compliance](https://www.thoughtmachine.net/)
+- [Terms of service](https://www.thoughtmachine.net/api-terms)
+- [Privacy policy](https://www.thoughtmachine.net/privacy)
+- [GitHub](https://github.com/thought-machine)
+
+## API Evangelist rating
+
+**Kin Score 32.2** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 39.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 26.2 |
+| Access clarity | 28.9 |
+
+**Agent readiness 28.1** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 37.0** — Banking & Open Finance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/thought-machine/](https://apis.io/providers/thought-machine/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Thought Machine: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/thought-machine/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
